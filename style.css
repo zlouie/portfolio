@@ -92,3 +92,31 @@ form button {
 .projects article h2 {
   margin: 0;
 }
+
+h1 {
+  font-size: 400%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+.cv section {
+  border-bottom: 1px solid oklch(80% 3% 200);
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+}
+
+.cv h2 {
+  color: var(--color-accent);
+}
+
+.cv article {
+  margin-bottom: 1em;
+}
+
+.cv time {
+  color: oklch(50% 3% 200);
+  font-size: 0.9em;
+}
