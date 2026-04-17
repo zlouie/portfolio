@@ -1,36 +1,28 @@
 body {
   /* Set line height to 1.5 times the font size
-	   and use the OS’s UI font as the website font
-	 */
+     and use the OS's UI font as the website font
+   */
   font: 100%/1.5 system-ui;
   max-width: 100ch;
   margin-inline: max(1em, (100% - 100ch) / 2);
 }
+
 img {
   max-width: 100%;
   height: auto;
 }
 
 :root {
+  color-scheme: light dark;
   --color-accent: oklch(65% 50% 0);
   accent-color: var(--color-accent);
 }
 
-body {
-  font: 100%/1.5 system-ui;
-  max-width: 100ch;
-  margin-inline: max(1em, (100% - 100ch) / 2);
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-
 nav {
+  --border-color: oklch(50% 10% 200 / 40%);
   display: flex;
   margin-bottom: 1em;
-  border-bottom: 1px solid oklch(80% 3% 200);
+  border-bottom: 1px solid var(--border-color);
 }
 
 nav a {
@@ -42,16 +34,16 @@ nav a {
 }
 
 nav a.current {
-  border-bottom: 0.4em solid oklch(80% 3% 200);
+  border-bottom: 0.4em solid var(--border-color);
   padding-bottom: 0.1em;
 }
 
 nav a:hover {
   border-bottom: 0.4em solid var(--color-accent);
-  background-color: oklch(from var(--color-accent) 95% 5% h);
+  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
 }
 
-/* My Contact form */
+/* Contact form */
 form {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -66,7 +58,8 @@ form label {
 
 form input,
 form textarea,
-form button {
+form button,
+select {
   font: inherit;
   box-sizing: border-box;
   width: 100%;
@@ -76,6 +69,7 @@ form button {
   grid-column: 1 / -1;
 }
 
+/* Projects page */
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
@@ -93,6 +87,7 @@ form button {
   margin: 0;
 }
 
+/* Headings */
 h1 {
   font-size: 400%;
 }
@@ -102,6 +97,7 @@ h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
 
+/* CV page */
 .cv section {
   border-bottom: 1px solid oklch(80% 3% 200);
   margin-bottom: 1em;
@@ -121,29 +117,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.9em;
 }
 
-:root {
-  color-scheme: light dark;
-  --color-accent: oklch(65% 50% 0);
-  accent-color: var(--color-accent);
-}
-
-nav {
-  --border-color: oklch(50% 10% 200 / 40%);
-  display: flex;
-  margin-bottom: 1em;
-  border-bottom: 1px solid var(--border-color);
-}
-
-nav a.current {
-  border-bottom: 0.4em solid var(--border-color);
-  padding-bottom: 0.1em;
-}
-
-nav a:hover {
-  border-bottom: 0.4em solid var(--color-accent);
-  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
-}
-
+/* Color scheme switcher */
 .color-scheme {
   position: absolute;
   top: 1em;

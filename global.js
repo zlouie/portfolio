@@ -1,4 +1,4 @@
-console.log('IT’S ALIVE!');
+console.log("IT'S ALIVE!");
 
 function $$(selector, context = document) {
   return Array.from(context.querySelectorAll(selector));
@@ -25,14 +25,17 @@ for (let p of pages) {
 
   url = !url.startsWith('http') ? BASE_PATH + url : url;
 
-  nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
-}
+  let a = document.createElement('a');
+  a.href = url;
+  a.textContent = title;
+  nav.append(a);
 
-let navLinks = $$("nav a");
-let currentLink = navLinks.find(
-  (a) => a.host === location.host && a.pathname === location.pathname,
-);
-currentLink?.classList.add('current');
+  a.classList.toggle('current', a.host === location.host && a.pathname === location.pathname);
+
+  if (a.host !== location.host) {
+    a.target = '_blank';
+  }
+}
 
 document.body.insertAdjacentHTML(
   'afterbegin',
@@ -49,16 +52,12 @@ document.body.insertAdjacentHTML(
 
 const select = document.querySelector('.color-scheme select');
 
-select.addEventListener('change', function() {
-  document.documentElement.style.colorScheme = this.value;
-});
-
-if (localStorage.colorScheme) {
-  document.documentElement.style.colorScheme = localStorage.colorScheme;
+if ("colorScheme" in localStorage) {
+  document.documentElement.style.setProperty('color-scheme', localStorage.colorScheme);
   select.value = localStorage.colorScheme;
 }
 
-select.addEventListener('change', function() {
-  document.documentElement.style.colorScheme = this.value;
-  localStorage.colorScheme = this.value;
-});cd
+select.addEventListener('input', function(event) {
+  document.documentElement.style.setProperty('color-scheme', event.target.value);
+  localStorage.colorScheme = event.target.value;
+});
