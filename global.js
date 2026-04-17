@@ -33,3 +33,32 @@ let currentLink = navLinks.find(
   (a) => a.host === location.host && a.pathname === location.pathname,
 );
 currentLink?.classList.add('current');
+
+document.body.insertAdjacentHTML(
+  'afterbegin',
+  `
+  <label class="color-scheme">
+    Theme:
+    <select>
+      <option value="light dark">Automatic</option>
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+    </select>
+  </label>`,
+);
+
+const select = document.querySelector('.color-scheme select');
+
+select.addEventListener('change', function() {
+  document.documentElement.style.colorScheme = this.value;
+});
+
+if (localStorage.colorScheme) {
+  document.documentElement.style.colorScheme = localStorage.colorScheme;
+  select.value = localStorage.colorScheme;
+}
+
+select.addEventListener('change', function() {
+  document.documentElement.style.colorScheme = this.value;
+  localStorage.colorScheme = this.value;
+});cd
