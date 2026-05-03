@@ -176,3 +176,13 @@ h1, h2, h3, h4, h5, h6 {
   background-color: var(--color);
   border-radius: 3px;
 }
+
+.searchBar {
+  width: 100%;
+  padding: 0.5em 1em;
+  border: 1px solid #ccc;
+  border-radius: 2em;
+  font-size: 1rem;
+  box-sizing: border-box;
+  margin-block: 1em;
+}
