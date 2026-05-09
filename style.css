@@ -209,3 +209,19 @@ h1, h2, h3, h4, h5, h6 {
 .selected:is(path) {
   fill: var(--color);
 }
+
+.stats {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5em 2em;
+  margin: 1em 0;
+}
+
+.stats dt {
+  font-weight: bold;
+  color: var(--color-accent);
+}
+
+.stats dd {
+  margin: 0;
+}
