@@ -225,3 +225,12 @@ h1, h2, h3, h4, h5, h6 {
 .stats dd {
   margin: 0;
 }
+
+.gridlines line {
+  stroke: oklch(50% 10% 200 / 20%);
+  stroke-dasharray: 2,2;
+}
+
+.gridlines path {
+  display: none;
+}
